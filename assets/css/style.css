@@ -1,4 +1,3 @@
-/* Custom Properties / Design Tokens */
 :root {
   /* Colors */
   --clr-neutral-white: #ffffff;
@@ -8,6 +7,7 @@
   --clr-neutral-eggshell: #e3ddd7;
   --clr-primary-raspberry: #7b284f;
   --clr-primary-brandy: #854632;
+  --clr-primary-link: #3e52a3;
   --clr-bg-prep: #fff7fb;
 
   /* Typography */
@@ -37,7 +37,11 @@ body {
   padding: 0;
   background-color: var(--clr-neutral-white);
   font-family: var(--ff-sans);
-  font-size: 1rem;
+  font-size: clamp(
+    1rem,
+    0.95rem + 0.25vw,
+    1.125rem
+  );
   line-height: 1.5;
   color: var(--clr-neutral-wenge);
 }
@@ -45,10 +49,10 @@ body {
 /* Utilities */
 .sr-only {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 0.0625rem; 
+  height: 0.0625rem; 
   padding: 0;
-  margin: -1px;
+  margin: -0.0625rem;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -74,7 +78,11 @@ body {
 
 .recipe__title {
   font-family: var(--ff-serif);
-  font-size: 2.25rem;
+  font-size: clamp(
+    2rem,
+    1.6rem + 2vw,
+    2.25rem
+  );
   font-weight: 400;
   color: var(--clr-neutral-charcoal);
   margin-block-start: 0;
@@ -153,7 +161,7 @@ body {
 /* Structural Breaks */
 .recipe__divider {
   border: none;
-  border-top: 1px solid var(--clr-neutral-eggshell);
+  border-top: 0.0625rem solid var(--clr-neutral-eggshell);
   margin-block: 2rem 0;
 }
 
@@ -171,11 +179,7 @@ body {
   padding-block: 0.75rem;
   padding-inline-start: 2rem;
   padding-inline-end: 0;
-  border-bottom: 1px solid var(--clr-neutral-eggshell);
-}
-
-.recipe__nutrition-table tr:last-child td {
-  border-bottom: none;
+  border-bottom: 0.0625rem solid var(--clr-neutral-eggshell);
 }
 
 .recipe__nutrition-table td:first-child {
@@ -189,6 +193,10 @@ body {
   width: 50%;
 }
 
+.recipe__nutrition-table tr:last-child td {
+  border-bottom: none;
+}
+
 /* Footer Information */
 .attribution {
   font-size: 0.7rem;
@@ -199,7 +207,9 @@ body {
 }
 
 .attribution a {
-  color: #3e52a3;
+  color: var(
+    --clr-primary-link
+  );
 }
 
 /* Desktop Breakout Context */
