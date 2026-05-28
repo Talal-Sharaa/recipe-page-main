@@ -10,9 +10,25 @@
   --clr-primary-link: #3e52a3;
   --clr-bg-prep: #fff7fb;
 
-  /* Typography */
+  /* Typography Families */
   --ff-sans: "outfit", sans-serif;
   --ff-serif: "young-serif", serif;
+
+  /* Borders & Shadows */
+  --border-thin: 0.0625rem;
+  --br-main: 0.75rem;
+  --br-card: 1.5rem;
+  --box-shadow-desktop: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.05);
+
+  /* Fluid Spacing System via CSS functions */
+  --space-sr: 0.0625rem;
+  --space-sr-neg: calc(-1 * var(--space-sr));
+  --space-xs: clamp(0.5rem, 0.45rem + 0.25vw, 0.75rem);
+  --space-sm: clamp(0.75rem, 0.7rem + 0.25vw, 1rem);
+  --space-md: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 1.35rem + 0.75vw, 2rem);
+  --space-xl: clamp(2rem, 1.8rem + 1vw, 2.5rem);
+  --space-xxl: clamp(2.5rem, 2.25rem + 1.25vw, 7.5rem);
 }
 
 /* Font Faces */
@@ -37,22 +53,18 @@ body {
   padding: 0;
   background-color: var(--clr-neutral-white);
   font-family: var(--ff-sans);
-  font-size: clamp(
-    1rem,
-    0.95rem + 0.25vw,
-    1.125rem
-  );
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
   line-height: 1.5;
   color: var(--clr-neutral-wenge);
 }
 
-/* Utilities */
+/* Utilities*/
 .sr-only {
   position: absolute;
-  width: 0.0625rem; 
-  height: 0.0625rem; 
+  width: var(--space-sr);
+  height: var(--space-sr);
   padding: 0;
-  margin: -0.0625rem;
+  margin: var(--space-sr-neg);
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -72,34 +84,30 @@ body {
 }
 
 .recipe__body {
-  padding-block: 2.5rem;
-  padding-inline: 2rem;
+  padding-block: var(--space-xl);
+  padding-inline: var(--space-lg);
 }
 
 .recipe__title {
   font-family: var(--ff-serif);
-  font-size: clamp(
-    2rem,
-    1.6rem + 2vw,
-    2.25rem
-  );
+  font-size: clamp(2rem, 1.6rem + 2vw, 2.25rem);
   font-weight: 400;
   color: var(--clr-neutral-charcoal);
   margin-block-start: 0;
-  margin-block-end: 1.5rem;
+  margin-block-end: var(--space-md);
   line-height: 1;
 }
 
 .recipe__description {
-  margin-block-end: 2rem;
+  margin-block-end: var(--space-xl);
 }
 
 /* Preparation Component Box */
 .recipe__preparation {
   background-color: var(--clr-bg-prep);
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  margin-block-end: 2rem;
+  padding: var(--space-md);
+  border-radius: var(--br-main);
+  margin-block-end: var(--space-xl);
 }
 
 .recipe__preparation-title {
@@ -107,7 +115,7 @@ body {
   font-weight: 700;
   color: var(--clr-primary-raspberry);
   margin-block-start: 0;
-  margin-block-end: 1rem;
+  margin-block-end: var(--space-sm);
 }
 
 /* Base Shared List Semantics */
@@ -115,14 +123,14 @@ body {
 .recipe__ingredients,
 .recipe__instructions {
   margin: 0;
-  padding-inline-start: 1.5rem;
+  padding-inline-start: var(--space-md);
 }
 
 .recipe__preparation-time-list li,
 .recipe__ingredients li,
 .recipe__instructions li {
-  margin-block-end: 0.75rem;
-  padding-inline-start: 0.75rem;
+  margin-block-end: var(--space-xs);
+  padding-inline-start: var(--space-xs);
 }
 
 .recipe__preparation-time-list li:last-child,
@@ -154,20 +162,20 @@ body {
   font-size: 1.75rem;
   font-weight: 400;
   color: var(--clr-primary-brandy);
-  margin-block-start: 2rem;
-  margin-block-end: 1.5rem;
+  margin-block-start: var(--space-xl);
+  margin-block-end: var(--space-md);
 }
 
 /* Structural Breaks */
 .recipe__divider {
   border: none;
-  border-top: 0.0625rem solid var(--clr-neutral-eggshell);
-  margin-block: 2rem 0;
+  border-top: var(--border-thin) solid var(--clr-neutral-eggshell);
+  margin-block: var(--space-xl) 0;
 }
 
-/* Nutrition Components */
+/* Nutrition Components*/
 .recipe__nutrition-text {
-  margin-block-end: 1.5rem;
+  margin-block-end: var(--space-md);
 }
 
 .recipe__nutrition-table {
@@ -176,21 +184,21 @@ body {
 }
 
 .recipe__nutrition-table td {
-  padding-block: 0.75rem;
-  padding-inline-start: 2rem;
+  padding-block: var(--space-xs);
+  padding-inline-start: var(--space-xl);
   padding-inline-end: 0;
-  border-bottom: 0.0625rem solid var(--clr-neutral-eggshell);
+  border-bottom: var(--border-thin) solid var(--clr-neutral-eggshell);
 }
 
 .recipe__nutrition-table td:first-child {
   color: var(--clr-neutral-wenge);
-  width: 50%;
+  width: calc(100% / 2);
 }
 
 .recipe__nutrition-table td:last-child {
   font-weight: 700;
   color: var(--clr-primary-brandy);
-  width: 50%;
+  width: calc(100% / 2);
 }
 
 .recipe__nutrition-table tr:last-child td {
@@ -201,15 +209,13 @@ body {
 .attribution {
   font-size: 0.7rem;
   text-align: center;
-  padding-block: 1.25rem;
+  padding-block: var(--space-sm);
   width: 100%;
   background-color: var(--clr-neutral-white);
 }
 
 .attribution a {
-  color: var(
-    --clr-primary-link
-  );
+  color: var(--clr-primary-link);
 }
 
 /* Desktop Breakout Context */
@@ -221,30 +227,28 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding-block: 7.5rem;
-    padding-inline: 1.25rem;
+    padding-block: var(--space-xxl);
+    padding-inline: var(--space-sm);
   }
 
   .recipe {
     max-width: min(100%, 46rem);
-    border-radius: 1.5rem;
-    padding: 2.5rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: var(--br-card);
+    padding: var(--space-xl);
+    box-shadow: var(--box-shadow-desktop);
   }
 
   .recipe__image {
-    border-radius: 0.75rem;
+    border-radius: var(--br-main);
   }
 
   .recipe__body {
-    padding-block-start: 2.5rem;
+    padding-block-start: var(--space-xl);
     padding-block-end: 0;
     padding-inline: 0;
   }
 
   .attribution {
     background-color: transparent;
-    position: absolute;
-    bottom: 0.6rem;
   }
 }
